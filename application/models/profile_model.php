@@ -59,9 +59,16 @@ class Profile_model extends CI_Model {
         $update_qu='';
         foreach($data as $key=>$value)
         {
-            if(!($key=='code_melli' || $key=='rooz' || $key=='mah'  || $key=='sal' || $key=='pass2'))
+            if(!($key=='code_melli' || $key=='rooz' || $key=='mah'  || $key=='sal' || $key=='pass2' || $key=='pass_emza2' ))
             {    
                 if($key=='pass')
+                {    
+                    if($value!='')
+                    {    
+                        $update_qu.= ($update_qu==''?'':',')."`$key`='$value'";
+                    }    
+                }
+                else if($key=='pass_emza')
                 {    
                     if($value!='')
                     {    
@@ -72,7 +79,7 @@ class Profile_model extends CI_Model {
                 {
                     $update_qu.= ($update_qu==''?'':',')."`$key`='$value'";
                 }    
-            }    
+            } 
         }
         $tarikh_p = $data['sal'].'/'.$data['mah'].'/'.$data['rooz'];
         $tarikh = $this->inc_model->jalaliToMiladi($tarikh_p);
