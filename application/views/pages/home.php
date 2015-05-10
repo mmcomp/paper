@@ -8,7 +8,8 @@
     //$mostRead = $this->visitor_model->drawMostRead($this->visitor_model->mostRead());
     //$mostRead = $this->visitor_model->drawAllMostRead(4);
     $conf = new conf();
-    redirect($conf->home_page);
+    if($conf->home_page!='home' and trim($conf->home_page)!='')
+	    redirect($conf->home_page);
 ?>
 <div class="row" >
     <div class="col-sm-2" >
